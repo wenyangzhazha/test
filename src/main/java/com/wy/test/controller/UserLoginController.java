@@ -22,59 +22,67 @@ import java.util.Map;
  * @CreateTime 2019/6/17 15:21
  */
 @RestController
-@RequestMapping("/userLogin")
+@RequestMapping("/user")
 @Api(tags = "登录测试")
 @Controller
 public class UserLoginController {
 
-    /**
-     * 登录
-     * @Author Sans
-     * @CreateTime 2019/6/20 9:21
-     */
-    @PostMapping(value = "/login")
-    @ApiOperation(value="用户登录")
-    public Map<String,Object> login(@RequestBody SysUser SysUser){
-        Map<String,Object> map = new HashMap<>();
-        //进行身份验证
-        try{
-            //验证身份和登陆
-            Subject subject = SecurityUtils.getSubject();
-            UsernamePasswordToken token = new UsernamePasswordToken(SysUser.getUsername(), SysUser.getPassword());
-            //进行登录操作
-            subject.login(token);
-        }catch (IncorrectCredentialsException e) {
-            map.put("code",500);
-            map.put("msg","用户不存在或者密码错误");
-            return map;
-        } catch (LockedAccountException e) {
-            map.put("code",500);
-            map.put("msg","登录失败，该用户已被冻结");
-            return map;
-        } catch (AuthenticationException e) {
-            map.put("code",500);
-            map.put("msg","该用户不存在");
-            return map;
-        } catch (Exception e) {
-            map.put("code",500);
-            map.put("msg","未知异常");
-            return map;
-        }
-        map.put("code",0);
-        map.put("msg","登录成功");
-        map.put("token", ShiroUtils.getSession().getId().toString());
-        return map;
-    }
-    /**
-     * 未登录
-     * @Author Sans
-     * @CreateTime 2019/6/20 9:22
-     */
-    @PostMapping("/unauth")
-    public Map<String,Object> unauth(){
-        Map<String,Object> map = new HashMap<>();
-        map.put("code",500);
-        map.put("msg","未登录");
-        return map;
-    }
+//    /**
+//     * 登录
+//     * @Author Sans
+//     * @CreateTime 2019/6/20 9:21
+//     */
+//    @PostMapping(value = "/login")
+//    @ApiOperation(value="用户登录")
+//    public String login(){  //@RequestBody SysUser SysUser
+//        Map<String,Object> map = new HashMap<>();
+//        //进行身份验证
+//        try{
+//            //验证身份和登陆
+//            Subject subject = SecurityUtils.getSubject();
+////            UsernamePasswordToken token = new UsernamePasswordToken(SysUser.getUsername(), SysUser.getPassword());
+//            //进行登录操作
+////            subject.login(token);
+//        }catch (IncorrectCredentialsException e) {
+//            map.put("code",500);
+//            map.put("msg","用户不存在或者密码错误");
+////            return map;
+//        } catch (LockedAccountException e) {
+//            map.put("code",500);
+//            map.put("msg","登录失败，该用户已被冻结");
+////            return map;
+//        } catch (AuthenticationException e) {
+//            map.put("code",500);
+//            map.put("msg","该用户不存在");
+////            return map;
+//        } catch (Exception e) {
+//            map.put("code",500);
+//            map.put("msg","未知异常");
+////            return map;
+//        }
+//        System.out.println("11111111111111111111");
+//        map.put("code",0);
+//        map.put("msg","登录成功");
+//        map.put("token", ShiroUtils.getSession().getId().toString());
+//        return "login";
+//    }
+//    /**
+//     * 未登录
+//     * @Author Sans
+//     * @CreateTime 2019/6/20 9:22
+//     */
+//    @PostMapping("/unauth")
+//    public Map<String,Object> unauth(){
+//        Map<String,Object> map = new HashMap<>();
+//        map.put("code",500);
+//        map.put("msg","未登录");
+//        return map;
+//    }
+
+
+//    @RequestMapping("/wy")
+//    public String login() {
+//        return "/login2";
+//    }
+
 }

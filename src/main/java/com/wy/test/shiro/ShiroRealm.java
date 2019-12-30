@@ -51,10 +51,10 @@ public class ShiroRealm extends AuthorizingRealm {
         Set<String> permsSet = new HashSet<>();
         //查询角色和权限(这里根据业务自行查询)
         List<SysRole> SysRoleList = sysRoleService.selectSysRoleByUserId(userId);
-        for (com.wy.test.entity.SysRole SysRole:SysRoleList) {
+        for (SysRole SysRole:SysRoleList) {
             rolesSet.add(SysRole.getRoleName());
             List<SysMenu> SysMenuList = sysMenuService.selectSysMenuByRoleId(SysRole.getRoleId());
-            for (com.wy.test.entity.SysMenu SysMenu :SysMenuList) {
+            for (SysMenu SysMenu :SysMenuList) {
                 permsSet.add(SysMenu.getPerms());
             }
         }
@@ -92,7 +92,7 @@ public class ShiroRealm extends AuthorizingRealm {
                 getName()
         );
         //验证成功开始踢人(清除缓存和Session)
-        ShiroUtils.deleteCache(username,true);
+//        ShiroUtils.deleteCache(username,true);
         return authenticationInfo;
     }
 }
