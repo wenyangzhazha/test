@@ -32,9 +32,9 @@ public class UserLoginController {
 //     * @Author Sans
 //     * @CreateTime 2019/6/20 9:21
 //     */
-//    @PostMapping(value = "/login")
+//    @PostMapping(value = "/LoginController")
 //    @ApiOperation(value="用户登录")
-//    public String login(){  //@RequestBody SysUser SysUser
+//    public String LoginController(){  //@RequestBody SysUser SysUser
 //        Map<String,Object> map = new HashMap<>();
 //        //进行身份验证
 //        try{
@@ -42,7 +42,7 @@ public class UserLoginController {
 //            Subject subject = SecurityUtils.getSubject();
 ////            UsernamePasswordToken token = new UsernamePasswordToken(SysUser.getUsername(), SysUser.getPassword());
 //            //进行登录操作
-////            subject.login(token);
+////            subject.LoginController(token);
 //        }catch (IncorrectCredentialsException e) {
 //            map.put("code",500);
 //            map.put("msg","用户不存在或者密码错误");
@@ -64,7 +64,7 @@ public class UserLoginController {
 //        map.put("code",0);
 //        map.put("msg","登录成功");
 //        map.put("token", ShiroUtils.getSession().getId().toString());
-//        return "login";
+//        return "LoginController";
 //    }
 //    /**
 //     * 未登录
@@ -81,7 +81,7 @@ public class UserLoginController {
 
 
 //    @RequestMapping("/wy")
-//    public String login() {
+//    public String LoginController() {
 //        return "/login2";
 //    }
 
